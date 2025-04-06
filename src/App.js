@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import IssueList from "./IssueList";
+import NewIssueForm from "./NewIssueForm";
 
 function App() {
+  const [issues, setIssues] = useState([
+    { id: 1, title: "Bug in login", priority: "High" },
+    { id: 2, title: "UI glitch on dashboard", priority: "Medium" },
+  ]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Issue Tracker</h1>
+      <NewIssueForm setIssues={setIssues} />
+      <IssueList issues={issues} />
     </div>
   );
 }
-
 export default App;
